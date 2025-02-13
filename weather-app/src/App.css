@@ -1,0 +1,77 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: center;
+  width: 320px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.container:hover {
+  transform: scale(1.05);
+}
+
+input {
+  width: 85%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+button {
+  background: #ff6f61;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff3b2f;
+}
+
+.weather-info {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+}
+
+h2 {
+  font-size: 28px;
+  margin: 5px 0;
+}
+
+h3 {
+  font-size: 22px;
+  margin: 5px 0;
+  font-weight: normal;
+}
