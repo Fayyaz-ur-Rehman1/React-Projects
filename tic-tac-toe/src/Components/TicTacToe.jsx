@@ -1,43 +1,52 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import "../App.css";
 
 function TicTacToe() {
     const [board, setBoard] = useState(Array(9).fill(null));
-    const [isXTruen, setXTurn] = useState(true);
-
-    const renderSquare = (index) => {
-        return (
-            <button onClick={() => { handleClick(index) }}>{board[index]}</button>
-        )
-    }
+    const [isXTurn, setIsXTurn] = useState(true);
+    const winner = calculateWinner(board);
 
     const handleClick = (index) => {
-        let newBoard = [...board];
-        newBoard[index] = isXTruen ? "X" : "O"
+        if (board[index] || winner) return;
+
+        const newBoard = [...board];
+        newBoard[index] = isXTurn ? "X" : "O";
         setBoard(newBoard);
-        setXTurn(!isXTruen);
-    }
+        setIsXTurn(!isXTurn);
+    };
+
+    const restartGame = () => {
+        setBoard(Array(9).fill(null));
+        setIsXTurn(true);
+    };
+
     return (
-        <div className='container'>
-            <h1>Tic Tac Toe Game</h1>
-            <div className='board'>
-                <div className='board-row'>
-                    {renderSquare(0)}
-                    {renderSquare(1)}
-                    {renderSquare(2)}
-                </div>
-                <div className='board-row'>
-                    {renderSquare(3)}
-                    {renderSquare(4)}
-                    {renderSquare(5)}
-                </div>
-                <div className='board-row'>
-                    {renderSquare(6)}
-                    {renderSquare(7)}
-                    {renderSquare(8)}
-                </div>
+        <div className="container">
+            <h1>Tic Tac Toe</h1>
+            <div className="status">{winner ? `Winner: ${winner}` : `Next Player: ${isXTurn ? "X" : "O"}`}</div>
+            <div className="board">
+                {board.map((value, index) => (
+                    <button key={index} onClick={() => handleClick(index)}>{value}</button>
+                ))}
             </div>
+            <button className="restart" onClick={restartGame}>Restart</button>
         </div>
-    )
+    );
 }
 
-export default TicTacToe
+function calculateWinner(board) {
+    const winningCombinations = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+    ];
+
+    for (let [a, b, c] of winningCombinations) {
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            return board[a];
+        }
+    }
+    return null;
+}
+
+export default TicTacToe;

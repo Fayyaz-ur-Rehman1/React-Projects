@@ -16,19 +16,24 @@ h1 {
   color: #444;
 }
 
+.status {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+}
+
 .board {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+  justify-content: center;
   align-items: center;
-  gap: 10px;
+  margin-bottom: 20px;
 }
 
-.board-row {
-  display: flex;
-  gap: 10px;
-}
-
-button {
+.square {
   width: 100px;
   height: 100px;
   font-size: 2rem;
@@ -37,18 +42,37 @@ button {
   border: 2px solid #444;
   cursor: pointer;
   transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-button:hover {
+.square:hover {
   background: #f0f0f0;
 }
 
-button:active {
+.square:active {
   background: #ddd;
 }
 
+.restart {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  background: #444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.restart:hover {
+  background: #666;
+}
+
 @media (max-width: 500px) {
-  button {
+  .square {
     width: 80px;
     height: 80px;
     font-size: 1.5rem;
